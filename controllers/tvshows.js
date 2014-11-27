@@ -45,7 +45,7 @@ exports.addTVShow = function(req, res) {
 //PUT - Update a register already exists
 exports.updateTVShow = function(req, res) {
 	TVShow.findById(req.params.id, function(err, tvshow) {
-		tvshow.title   = req.body.petId;
+		tvshow.title   = req.body.title;
 		tvshow.year    = req.body.year;
 		tvshow.country = req.body.country;
 		tvshow.poster  = req.body.poster;
