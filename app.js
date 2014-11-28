@@ -14,6 +14,7 @@ mongoose.connect('mongodb://localhost:15247/tvshows', function(err, res) {
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(methodOverride());
+app.use(express.static(__dirname + '/public')); 
 
 // Import Models and controllers
 var models     = require('./models/tvshow')(app, mongoose);
@@ -21,9 +22,6 @@ var TVShowCtrl = require('./controllers/tvshows');
 
 // Example Route
 var router = express.Router();
-router.get('/', function(req, res) {
-  res.send("Hello world!");
-});
 app.use(router);
 
 // API routes
