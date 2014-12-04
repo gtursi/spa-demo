@@ -3,14 +3,16 @@ var app = angular.module("tvShowsApp", []);
 app.controller("tvShowsController", function($scope, $http) {
     
 	var serviceUrl = "http://da03d:15246/tvshows/";
-	
+		
 	$scope.refreshData = function() {
+		$scope.showForm = false;
+		
 		$http.get(serviceUrl)
 			.success(function(response) {$scope.tvShows = response;});
 	};
 	
 	$scope.refreshData();
-	
+
 	$scope.create = true;
 	$scope.incomplete = false; 
 	$scope._id = null;
@@ -18,6 +20,9 @@ app.controller("tvShowsController", function($scope, $http) {
 	$scope.year = "";
 		
 	$scope.editTvShow = function(tvShow) {
+	
+		$scope.showForm = true;
+	
 		if (tvShow == "new") {
 			$scope.create = true;
 			$scope.incomplete = true;
